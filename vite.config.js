@@ -9,8 +9,4 @@ export default defineConfig({
       ? `/${repositoryName}/`
       : "/",
   plugins: [react()],
-  test: {
-    globals: true,
-    environment: "jsdom",
-  },
 });
