@@ -1,6 +1,7 @@
 import './Home.css';
 
 export const appMetadata = {
+  AppId: 'home',
   MenuIcon: '⌂',
   MenuName: 'Home',
   AppName: 'Web-Apps',

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { apps } from '../Apps/Apps';
+import { apps, homeApp } from '../Apps/Apps';
+import { useUserPreferences } from '../State/UserPreferences/UserPreferencesContext';
 import AppMenu from './Components/AppMenu/AppMenu';
 import TitleBar from './Components/TitleBar/TitleBar';
 import './Wireframe.css';
@@ -13,9 +14,10 @@ function findAppByPath(pathname) {
 function Wireframe() {
   const location = useLocation();
   const navigate = useNavigate();
+  const { preferences } = useUserPreferences();
 
-  const [isDarkModeSelected, setIsDarkModeSelected] = useState(false);
   const [isAppMenuOpen, setIsAppMenuOpen] = useState(true);
+  const isDarkModeSelected = preferences.isDarkModeSelected ?? false;
   
   const selectedApp = findAppByPath(location.pathname);
 
@@ -31,8 +33,6 @@ function Wireframe() {
     <div className={`wireframe ${isDarkModeSelected ? 'dark' : ''} ${isAppMenuOpen ? '' : 'menuCollapsed'}`}>
       <TitleBar
         app={selectedApp}
-        isDarkModeSelected={isDarkModeSelected}
-        onDarkModeChange={setIsDarkModeSelected}
         isAppMenuOpen={isAppMenuOpen}
         onAppMenuToggle={() => setIsAppMenuOpen((isOpen) => !isOpen)}
       />

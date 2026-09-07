@@ -1,6 +1,14 @@
 import { Button, Switch } from '@base-ui/react';
+import { useUserPreferences } from '../../../State/UserPreferences/UserPreferencesContext';
 
-function TitleBar({ app, isDarkModeSelected, onDarkModeChange, isAppMenuOpen, onAppMenuToggle }) {
+function TitleBar({ app, isAppMenuOpen, onAppMenuToggle }) {
+  const { preferences, updatePreferences } = useUserPreferences();
+  const isDarkModeSelected = preferences.isDarkModeSelected ?? false;
+
+  const setIsDarkModeSelected = (isSelected) => {
+    updatePreferences({ isDarkModeSelected: isSelected });
+  };
+
   return (
     <header className="titleBar">
       <div className="titleGroup">
@@ -22,7 +30,7 @@ function TitleBar({ app, isDarkModeSelected, onDarkModeChange, isAppMenuOpen, on
         <Switch.Root
           aria-label="Light- und Dark-Mode umschalten"
           checked={isDarkModeSelected}
-          onCheckedChange={onDarkModeChange}
+          onCheckedChange={setIsDarkModeSelected}
           className="themeSwitch"
         >
           <Switch.Thumb className="switchThumb" />
