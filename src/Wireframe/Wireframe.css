@@ -1,0 +1,56 @@
+.wireframe {
+  --background: #f4f8fc;
+  --surface: #ffffff;
+  --surface-raised: #ffffff;
+  --text: #172b4d;
+  --muted: #6b7c93;
+  --border: #d9e2ec;
+  --accent: #1976d2;
+  --accent-soft: #e3f2fd;
+  --focus: #0d47a1;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  color: var(--text);
+  background: var(--background);
+  transition: color 180ms ease, background 180ms ease;
+}
+
+.dark { --background: #101827; --surface: #172b4d; --surface-raised: #213b63; --text: #f5f9ff; --muted: #b6c6da; --border: #31527a; --accent: #64b5f6; --accent-soft: #244e7d; }
+.wireframe button { border: 0; border-radius: 0; color: inherit; font: inherit; }
+.wireframe button:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.titleBar { display: flex; align-items: center; justify-content: space-between; min-height: 72px; padding: 0 5vw; background: var(--surface); border-bottom: 1px solid var(--border); box-shadow: 0 1px 5px rgb(23 43 77 / 8%); }
+.titleGroup, .themeControl { display: flex; align-items: center; }
+.titleGroup { gap: 12px; }
+.menuToggle { display: grid; width: 36px; height: 36px; place-items: center; color: var(--accent) !important; background: transparent; border-radius: 6px !important; cursor: pointer; font-size: 22px !important; line-height: 1; }
+.menuToggle:hover { background: var(--accent-soft); }
+.appTitle { display: flex; align-items: baseline; gap: 8px; color: var(--text); font-size: 19px; font-weight: 700; letter-spacing: .01em; }
+.appTitle small { color: var(--muted); font-size: 11px; font-weight: 400; }
+.themeControl { gap: 12px; color: var(--muted); font: 12px Arial, sans-serif; }
+.themeSwitch { display: flex; align-items: center; justify-content: flex-start; box-sizing: border-box; width: 44px; height: 24px; padding: 2px; border-radius: 999px !important; background: #c5d1df; box-shadow: inset 0 0 0 1px rgb(23 43 77 / 12%); cursor: pointer; transition: background 180ms ease, box-shadow 180ms ease; }
+.themeSwitch[data-checked] { justify-content: flex-end; background: var(--accent); box-shadow: none; }
+.switchThumb { display: block; width: 20px; height: 20px; flex: 0 0 20px; border-radius: 50%; background: #fff; box-shadow: 0 2px 4px rgb(23 43 77 / 24%); transition: transform 180ms ease; }
+.layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); min-height: calc(100vh - 72px); }
+.sidebar { padding: 32px 18px; background: var(--surface); border-right: 1px solid var(--border); }
+.menuLabel { margin: 0 12px 18px; color: var(--accent); font: 11px Arial, sans-serif; letter-spacing: .14em; text-transform: uppercase; }
+.groupButton, .appButton { display: flex; align-items: center; width: 100%; min-height: 42px; padding: 0 12px; background: transparent; border-radius: 6px !important; text-align: left; cursor: pointer; }
+.groupButton { gap: 10px; font-weight: 700; }
+.groupButton:hover, .appButton:hover, .selected { background: var(--accent-soft); }
+.groupIcon, .appIcon { display: grid; width: 24px; height: 24px; place-items: center; color: var(--accent); font: 18px Arial, sans-serif; }
+.chevron { display: grid; width: 24px; height: 24px; place-items: center; margin-left: auto; color: var(--muted); }
+.chevron::before { width: 7px; height: 7px; border-right: 1px solid currentColor; border-bottom: 1px solid currentColor; transform: rotate(-45deg); content: ''; }
+.chevron.expanded::before { transform: rotate(45deg) translate(-1px, -1px); }
+.appList { margin: 3px 0 12px 24px; padding-left: 10px; border-left: 1px solid var(--border); }
+.appButton { gap: 10px; color: var(--muted); font-size: 14px; }
+.appButton.selected { color: var(--text); }
+.content { min-width: 0; padding: 0; background: var(--background); }
+.appSurface { display: grid; min-height: calc(100vh - 72px); place-items: center; margin: 0; padding: 0; }
+.menuCollapsed .layout { grid-template-columns: minmax(0, 1fr); }
+.menuCollapsed .sidebar { display: none; }
+
+@media (max-width: 700px) {
+  .titleBar { min-height: 68px; }
+  .layout { display: block; min-height: calc(100vh - 68px); }
+  .sidebar { padding: 24px 5vw; border-right: 0; border-bottom: 1px solid var(--border); }
+  .content { padding: 0; }
+  .appSurface { min-height: calc(100vh - 68px); }
+}
