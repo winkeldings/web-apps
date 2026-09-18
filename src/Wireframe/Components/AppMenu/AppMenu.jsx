@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button } from '@base-ui/react';
-import { appGroups, homeApp } from '../../../Apps/Apps';
+import { appGroups, topLevelApps } from '../../../Apps/Apps';
 
 function AppMenu({ selectedApp, onAppSelect }) {
   const [openGroups, setOpenGroups] = useState(
@@ -15,13 +15,16 @@ function AppMenu({ selectedApp, onAppSelect }) {
     <aside className="sidebar" aria-label="App-Menü">
       <p className="menuLabel">Apps</p>
       <nav>
-        <Button
-          className={`appButton homeButton ${selectedApp.MenuName === homeApp.MenuName ? 'selected' : ''}`}
-          onClick={() => onAppSelect(homeApp)}
-        >
-          <span className="appIcon" aria-hidden="true">{homeApp.MenuIcon}</span>
-          <span>{homeApp.MenuName}</span>
-        </Button>
+        {topLevelApps.map((app) => (
+          <Button
+            className={`appButton homeButton ${selectedApp.MenuName === app.MenuName ? 'selected' : ''}`}
+            key={app.MenuName}
+            onClick={() => onAppSelect(app)}
+          >
+            <span className="appIcon" aria-hidden="true">{app.MenuIcon}</span>
+            <span>{app.MenuName}</span>
+          </Button>
+        ))}
         {appGroups.map((group) => (
           <div className="group" key={group.name}>
             <Button

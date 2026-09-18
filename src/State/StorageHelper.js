@@ -17,6 +17,13 @@ function writeStorageValue(storageKey, value) {
   }
 }
 
+function removeStorageValue(storageKey) {
+  try {
+    window.localStorage.removeItem(storageKey);
+  } catch {
+  }
+}
+
 function readUserPreferences() {
   return readStorageValue(USER_PREFERENCES_STORAGE_KEY, {});
 }
@@ -33,10 +40,15 @@ function writeAppData(appId, data) {
   writeStorageValue(`${WEB_APPS_STORAGE_PREFIX}:${appId}`, data);
 }
 
+function removeAppData(appId) {
+  removeStorageValue(`${WEB_APPS_STORAGE_PREFIX}:${appId}`);
+}
+
 export {
   WEB_APPS_STORAGE_PREFIX,
   readAppData,
   readUserPreferences,
+  removeAppData,
   writeAppData,
   writeUserPreferences,
 };
