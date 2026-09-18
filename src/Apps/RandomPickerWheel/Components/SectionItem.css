@@ -1,0 +1,45 @@
+.sectionItem {
+  display: grid;
+  min-height: 38px;
+  grid-template-columns: 22px minmax(0, 1fr) 26px;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  border-bottom: 1px solid #e1e7ee;
+  color: var(--ink);
+  font: 14px Arial, sans-serif;
+}
+
+.sectionItem:last-child {
+  border-bottom: 0;
+}
+
+.sectionName {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.deleteButton {
+  display: grid;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border-radius: 3px !important;
+  place-items: center;
+  color: #c24a42 !important;
+  background: transparent !important;
+  cursor: pointer;
+  font: 20px Arial, sans-serif !important;
+  line-height: 1;
+  opacity: 0;
+}
+
+.sectionItem:hover .deleteButton,
+.sectionItem:focus-within .deleteButton {
+  opacity: 1;
+}
+
+.deleteButton:hover {
+  background: #fbe9e7 !important;
+}

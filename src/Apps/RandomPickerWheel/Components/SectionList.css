@@ -1,0 +1,110 @@
+.sectionPanel {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px 16px 14px;
+  border: 1px solid #cbd6e2;
+  border-radius: 6px;
+  background: rgb(255 255 255 / 72%);
+  box-shadow: 0 4px 12px rgb(24 34 48 / 7%);
+  text-align: left;
+}
+
+.addSection {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr) 34px;
+  align-items: center;
+  gap: 9px;
+  padding-bottom: 13px;
+  border-bottom: 1px solid #d9e2ec;
+}
+
+.colorSwatch {
+  display: block;
+  width: 22px;
+  height: 22px;
+  border: 1px solid rgb(24 34 48 / 12%);
+  box-sizing: border-box;
+}
+
+.colorPicker {
+  position: relative;
+  display: block;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+}
+
+.colorPicker input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.addSection input {
+  min-width: 0;
+  height: 34px;
+  padding: 0 9px;
+  border: 1px solid #c9d2de;
+  border-radius: 3px;
+  color: var(--ink);
+  background: #fff;
+  font: 14px Arial, sans-serif;
+}
+
+.addSection input:focus {
+  border-color: #1976d2;
+  outline: 2px solid rgb(25 118 210 / 18%);
+}
+
+.addButton {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 1px solid #c9d2de !important;
+  border-radius: 3px !important;
+  place-items: center;
+  color: #1976d2 !important;
+  background: #fff !important;
+  cursor: pointer;
+  font: 22px Arial, sans-serif !important;
+  line-height: 1;
+}
+
+.addButton:hover {
+  background: #e3f2fd !important;
+}
+
+.sectionList {
+  display: flex;
+  max-height: min(42vh, 360px);
+  flex-direction: column;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+}
+
+.clearButton {
+  align-self: flex-start;
+  padding: 6px 0;
+  color: #c24a42 !important;
+  background: transparent !important;
+  cursor: pointer;
+  font: 12px Arial, sans-serif !important;
+}
+
+.clearButton:disabled {
+  cursor: default;
+  opacity: .45;
+}
+
+@media (max-width: 900px) {
+  .sectionPanel {
+    width: min(100%, 360px);
+    justify-self: center;
+  }
+}

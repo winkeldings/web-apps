@@ -1,0 +1,102 @@
+.wheelColumn {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.wheelStage {
+  position: relative;
+  display: grid;
+  width: min(var(--wheel-size), 100%);
+  height: var(--wheel-size);
+  max-width: 100%;
+  aspect-ratio: 1;
+  height: auto;
+  justify-self: center;
+  place-items: center;
+}
+
+.wheel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border: 10px solid #fff;
+  border-radius: 50%;
+  box-sizing: border-box;
+  background: conic-gradient(
+    from -90deg,
+    var(--yellow) 0deg 72deg,
+    var(--coral) 72deg 144deg,
+    var(--mint) 144deg 216deg,
+    var(--blue) 216deg 288deg,
+    var(--violet) 288deg 360deg
+  );
+  box-shadow: 0 18px 30px rgb(24 34 48 / 18%), 0 0 0 2px rgb(24 34 48 / 12%);
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  transition: box-shadow 160ms ease;
+}
+
+.wheel:active {
+  cursor: grabbing;
+  box-shadow: 0 12px 20px rgb(24 34 48 / 20%), 0 0 0 2px rgb(24 34 48 / 18%);
+}
+
+.wheel::before {
+  position: absolute;
+  inset: 7%;
+  border: 1px solid rgb(255 255 255 / 70%);
+  border-radius: 50%;
+  content: '';
+}
+
+.wheelPointer {
+  position: absolute;
+  z-index: 2;
+  top: -17px;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-right: 15px solid transparent;
+  border-left: 15px solid transparent;
+  border-top: 32px solid #182230;
+  filter: drop-shadow(0 3px 2px rgb(24 34 48 / 20%));
+  transform: translateX(-50%);
+}
+
+.wheelStart {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  z-index: 1;
+  display: grid;
+  width: 58px;
+  height: 58px;
+  padding: 0;
+  border: 7px solid #fff !important;
+  border-radius: 50% !important;
+  place-items: center;
+  color: #fff !important;
+  background: #182230 !important;
+  box-shadow: 0 3px 8px rgb(24 34 48 / 30%);
+  cursor: pointer;
+  font: 700 11px Arial, sans-serif !important;
+  transform: translate(-50%, -50%);
+}
+
+.wheelStart:hover:not(:disabled) {
+  background: #c24a42 !important;
+}
+
+.wheelStart:disabled {
+  cursor: default;
+  opacity: 1;
+  background: #87919d !important;
+}
+
+.wheelStartEmpty {
+  pointer-events: none;
+  opacity: .5 !important;
+}
